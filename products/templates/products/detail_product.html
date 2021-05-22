@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Produit {{product.product_name}}{% endblock %}
+
+{% block css_links %}
+<link href="{% static 'products/css/detail.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+
+<header class="masthead">
+    <div class="container h-100">
+        <div class="row">
+            <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 bg-white rounder" style="min-height:560px;">
+                <h1 class="text-center py-2">{{product.product_name}}</h1>
+                <img src="{{product.image_url}}" class="h-70 w-auto mw-100 rounded" alt="image d'un produit">
+                <p class="text-center pt-2">Marque du produit : {{product.brand}}</p>
+                <a href="{% url 'substitutes_product' product_id=product.barcode %}" class="btn btn-primary d-block w-min mb-4 mx-auto">Substituer</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- About -->
+<section class="page-section bg-primary" id="about">
+    <div class="container">
+        <div class="row h-100">
+            <div class="col-md-6 col-12 d-flex pb-5 pb-md-0 align-items-center">
+                <img src="{% if product.nutrition_grade == 'a'%} 
+                {% static 'products/images/nutriscore-a.svg' %}
+                {% elif product.nutrition_grade == 'b'%} 
+                {% static 'products/images/nutriscore-b.svg' %}
+                {% elif product.nutrition_grade == 'c'%} 
+                {% static 'products/images/nutriscore-c.svg' %}
+                {% elif product.nutrition_grade == 'd'%} 
+                {% static 'products/images/nutriscore-d.svg' %}
+                {% elif product.nutrition_grade == 'e'%} 
+                {% static 'products/images/nutriscore-e.svg' %}
+                {% endif %}
+                " class="img-fluid d-block mx-auto rounded">
+            </div>
+            <div class="col-md-6 col-12">
+                <img src="{{product.image_nutrition_url}}" class="img-fluid d-block mx-auto rounded">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text-center pt-5 pb-2"><a href="{{product.url_page}}" class="off-link text-light p-1 border rounded" target="_blank" rel="noreferrer noopener">Voir la fiche OpenFoodFacts</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block javascript_scripts %}
+
+{% endblock %}

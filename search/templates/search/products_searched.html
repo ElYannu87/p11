@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Recherche produit{% endblock %}
+
+{% block css_links %}
+<link href="{% static 'search/css/products_searched.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+    <header class="masthead">
+    <div class="container header-title pb-5">
+        <h1 class="d-block text-center text-white">Les résultats de votre recherche</h1>
+    </div>
+    <div class="results bg-white">
+        <div class="container">
+            <div class="row d-flex justify-content-between justify-content-lg-around text-center">
+            {% if not products%}
+            <p> Nous n'avons pas trouvé de produits correspondants à votre recherche</p>
+            {% else %}
+            {% for product in products%}
+                <div class="p-2 mb-5 mx-lg-2 product-card bg-light border rounded col-lg-3 col-md-5 col-8 offset-2 offset-md-0">
+                    <img class="img-fluid product-img rounded mb-1" src="{{product.image_url}}">
+                    <a class="d-block mb-2"href="{% url 'detail' pk=product.barcode %}"> {{product.product_name}} - {{product.brand}}</a>
+                    <a class="btn btn-primary" href="{% url 'substitutes_product' product_id=product.barcode %}"> Substituer </a>
+                    <div class="nutriscore nutriscore-{{product.nutrition_grade}} text-uppercase text-center">{{product.nutrition_grade}}</div>
+                </div>
+            {%endfor%}
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block javascript_scripts %}
+{% endblock %}

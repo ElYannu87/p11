@@ -1,0 +1,21 @@
+header.masthead {
+    background-image: url("../images/remy-2.539be1f6b359.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+
+header.masthead h1 {
+    font-size: 2rem;
+    width: min-content;
+}
+
+.masthead .container .row .col-12 {
+    border: solid 1px lightgrey;
+}
+
+header.masthead p {
+    display: flex;
+    justify-content: space-between;
+}

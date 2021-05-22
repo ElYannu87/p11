@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contact{% endblock %}
+
+{% block css_links %}
+<link href="{% static 'favorites/css/favorites.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<header class="masthead">
+    <div class="container header-title pb-5">
+        <h1 class="d-block text-center text-white">Contact</h1>
+    </div>
+    <div class="results bg-white text-center">
+        <div class="container">
+        <p class="mb-5">Un problème ou une question ? N'hésitez pas à nous contacter !</p>
+        <div class="row">
+            <div class="col-12 col-md-4 offset-md-2 offset-0 text-center">
+                <i class="far fa-envelope fa-4x mb-2"></i>
+                <p>infos@purbeurre.com</p>
+            </div>
+            <div class="col-md-4 col-12 text-center">
+                <i class="fas fa-phone-alt fa-4x mb-2"></i>
+                <p>02.11.22.33.44</p>
+            </div>
+    </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block javascript_scripts %}
+{% endblock %}

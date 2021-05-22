@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Pur Beurre - {% block title %}{% endblock %}</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'assets/img/logo_pur_beurre-favicon.png' %}" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+        <!-- Third party plugin CSS-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Scope+One" rel="stylesheet" type="text/css">
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+        {% block css_links %}
+        {% endblock%}
+        <style>
+            .autocomplete-rectangle
+{
+  background-color:white;
+  color:black;
+  width:min-content;
+  list-style:none;
+  padding-left:5px;
+}
+        </style>
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+            <div class="container">
+                <img class="mr-2" src="{% static 'assets/img/logo_pur_beurre.png' %}" style="width:30px;"><h1 class="navbar-brand"><a href="{% url 'home' %}" class="home_link">Pur Beurre</a></h1><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto my-2 my-lg-0 d-flex align-items-center">
+                        {% if request.path != "/" %}
+                            <li class="nav-item d-flex flex-row align-items-center">
+                                <form class="form-inline d-flex justify-content-center" action="{% url 'search_products_post' %}" method="post">
+                                    {% csrf_token %}
+                                    <input name='term' id='term' type="text" class="product-input form-control my-2" placeholder="Produit à substituer">
+                                    <button name='button_send' id='button_send' type="submit" class="btn btn-primary ml-2">Chercher</button>
+                                </form>
+                            </li>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                        <li class="nav-item color-white"><a class="nav-link" title="Mon compte utilisateur" href="{% url 'profile' %}"><i class="fas fa-user fa-2x"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" title="Mes favoris" href="{% url 'user_favorites' %}"><i class="fas fa-carrot fa-2x"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" title="Me déconnecter" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt fa-2x"></i></a></li>
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link" title="Me connecter" id='link_to_login' href="{% url 'login' %}"><i class="fas fa-sign-in-alt fa-2x"></i></a></li>
+                        {% endif%}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        {% block content %}{% endblock %}
+        
+        <!-- Footer-->
+        <footer class="bg-light py-5">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <p><a href="{% url 'legal_notices' %}">Mentions légales</a></p>
+                    </div>
+                    <div class="col-6 text-center">
+                        <p><a href="{% url 'contact' %}">Contact</a></p>
+                    </div>
+
+                </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'js/scripts.js' %}"></script>
+        <script>
+            const autocomplete_url = "{% url 'complete' %}";
+        </script>
+        <script src="{% static 'search/js/autocomplete.js' %}"></script>
+        {% block javascript_scripts %}
+        {% endblock %}
+    </body>
+</html>

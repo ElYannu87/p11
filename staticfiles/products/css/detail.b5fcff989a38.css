@@ -1,0 +1,38 @@
+header.masthead {
+    background: url("../images/home_picture.06c08a082adb.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+    color: rgb(244, 98, 58);
+}
+
+header.masthead h1 {
+    font-size: 1.8rem;
+}
+
+header.masthead img {
+    display: block;
+    width: 60%;
+    margin: auto;
+}
+
+.off-link {
+    transition: color 0.3s ease-out, backround-color 0.3s ease-out;
+}
+
+.off-link:hover, .off-link:focus {
+    text-decoration: none;
+    color: rgb(244, 98, 58)!important;
+    background-color: rgb(255, 255, 255);
+}
+
+a.text-light:hover, a.text-light:focus {
+    text-decoration: none;
+    color: rgb(244, 98, 58)!important;
+    background-color: rgb(255, 255, 255);
+}
+
+.masthead .btn {
+    width: min-content;
+}

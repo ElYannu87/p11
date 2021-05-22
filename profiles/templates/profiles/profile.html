@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Mon compte utilisateur{% endblock %}
+
+{% block css_links %}
+<link href="{% static 'favorites/css/favorites.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+    <header class="masthead">
+    <div class="container header-title pb-5">
+        <h1 class="d-block text-center text-white">Ahoy {{user.username}}</h1>
+    </div>
+    <div class="results bg-white text-center">
+        <p class="border rounded d-inline p-2 bg-light">mail : {{user.email}}
+    </div>
+</header>
+{% endblock %}
+
+{% block javascript_scripts %}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Register{% endblock %}
+
+{% block css_links %}
+<link href="{% static 'users/css/login.css' %}" rel="stylesheet" />
+{% endblock %}
+{% block content%}
+
+<header class="masthead">
+    <div class="container h-100">
+        <div class="row">
+            <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 bg-white rounded" style="min-height:560px">
+            <h1 class="border-bottom mt-3 mb-5 pb-1 mx-auto">Inscription</h1>
+            {% if user_exists %}
+                <p class="text-danger">Ce pseudo ou cette adresse mail est déjà assoscié à un compte existant !</p>
+                {% endif %}
+                <form id="form_create_account" method="POST" action="{% url 'signup' %}">
+                    {% crispy form %}
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+{% endblock %}

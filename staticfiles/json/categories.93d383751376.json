@@ -1,0 +1,27 @@
+
+[
+    {
+        "category" : "Produits laitiers",
+        "sub-category" : ["Laits", "Beurres", "Boissons lactées", "Fromages"]
+    },
+
+    {
+        "category" : "Boissons",
+        "sub-category" : ["Sodas", "Boissons au thé", "Boissons énergisantes"]
+    },
+
+    {
+        "category" : "Petit-déjeuners",
+        "sub-category" : ["Céréales pour petit-déjeuner", "Pâtes à tartiner", "Confitures et marmelades"]
+    },
+
+    {
+        "category" : "Viandes",
+        "sub-category" : ["Charcuteries", "Volailles"]
+    },
+
+    {
+        "category" : "Desserts",
+        "sub-category" : ["Desserts au chocolat", "Compotes", "Desserts lactés", "Snacks sucrés"]
+    }
+]

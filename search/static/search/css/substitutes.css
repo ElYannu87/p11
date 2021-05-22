@@ -1,0 +1,104 @@
+header.masthead
+{
+    background: url("../images/home_page.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+    color:rgb(244, 98, 58);
+
+}
+
+header.masthead h1
+{
+    font-size:1.8rem;
+}
+
+header.masthead img
+{
+    display:block;
+    width:60%;
+    margin:auto;
+}
+
+a.text-light:hover, a.text-light:focus
+{
+    text-decoration:none;
+    color:rgb(244, 98, 58)!important;
+    background-color: rgb(255,255,255);
+}
+
+
+.results
+{
+    min-height: 100vh;
+    padding-top: 4.5rem;
+    padding-bottom: 0;
+}
+
+.product-card
+{
+    min-width:200px;
+}
+
+.product-img
+{
+    height:250px;
+}
+
+.nutriscore
+{
+    position:absolute;
+    border:solid 1px black;
+    height:2.8rem;
+    width:2.8rem;
+    font-size:1.7rem;
+    border-radius:50%;
+    top:-20px;
+    right:-20px;
+    color:white;
+}
+
+.nutriscore-a
+{
+    background-color:green;
+
+}
+
+.nutriscore-b
+{
+    background-color: rgb(30, 199, 30);
+}
+
+.nutriscore-c
+{
+    background-color: orange;
+}
+
+.nutriscore-d
+{
+    background-color: orangered;
+}
+
+.nutriscore-e
+{
+    background-color: red;
+}
+
+.results h1
+{
+    min-width:min-content;
+    max-width:max-content;
+}
+
+@include media-breakpoint-up(sm) {
+    .results-h1 {
+      font-size: 1.2rem;
+    }
+  }
+  
+  @include media-breakpoint-up(md) {
+    .results h1 {
+      font-size: 1.4rem;
+    }
+  }

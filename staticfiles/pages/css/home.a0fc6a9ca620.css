@@ -1,0 +1,26 @@
+html * {
+    font-family: sans-serif;
+}
+
+header.masthead {
+    background: url("../images/home_page.99dd1c12df6c.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+
+.container {
+    position: relative;
+}
+
+.welcome {
+    background-color: rgb(46, 126, 50);
+    color: white;
+    width: max-content;
+    position: fixed;
+    left: 20px;
+    padding: 0.2rem;
+    bottom: 0;
+    z-index: 12;
+}

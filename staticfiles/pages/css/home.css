@@ -1,0 +1,26 @@
+header.masthead
+{
+    background: url("../images/home_page_grey.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+
+}
+
+.container
+{
+    position:relative;
+}
+.welcome
+{
+    background-color:rgb(46,126,50);
+    color:white;
+    width:max-content;
+    position:fixed;
+    left:20px;
+    padding:0.2em;
+    bottom:0;
+    z-index:12;
+
+}

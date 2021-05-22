@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Substituts du produit {{product.product_name}}{% endblock %}
+
+{% block css_links %}
+<link href="{% static 'search/css/substitutes.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+
+<header class="masthead">
+    <div class="container h-100">
+        <div class="row">
+            <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 bg-white rounded" style="min-height:560px">
+                <h1 class="text-center py-2">Produit à substituer : {{product.product_name}}</h1>
+                <img src="{{product.image_url}}" class="h-70 w-auto mw-100" alt="image d'un produit">
+                <p class="text-center pt-2">Marque du produit : {{product.brand}}</p>
+                <p class="text-center pt-2">Nutriscore du produit : {{product.nutrition_grade}}</p>
+                
+            </div>
+        </div>
+    </div>
+</header>
+<!-- About-->
+<div class="results bg-white">
+        <h1 class="h3 d-block mx-auto pb-1 mb-5 text-center">Les substituts du produit</h1>
+        <div class="container">
+            <div class="row d-flex justify-content-between text-center">
+            {% if not substitutes%}
+            <p> Nous n'avons pas trouvé de produits plus sains que le produit à substituer</p>
+            {% else %}
+            {% for substitute in substitutes %}
+                <div class="p-2 mb-5 mx-lg-2 product-card bg-light border rounded col-lg-3 col-md-5 col-8 offset-2 offset-md-0">
+                    <img class="img-fluid product-img rounded mb-1" src="{{substitute.image_url}}">
+                    <a class="d-block mb-2"href="{% url 'detail' pk=substitute.barcode %}"> {{substitute.product_name}} - {{substitute.brand}}</a>
+                    <a class="btn btn-success" href="{% url 'add_favorite' product_id=product.barcode substitute_id=substitute.barcode %}"> <i class="fas fa-save"></i> Sauvegarder </a>
+                    <div class="nutriscore nutriscore-{{substitute.nutrition_grade}} text-uppercase text-center">{{substitute.nutrition_grade}}</div>
+                </div>
+            {%endfor%}
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block javascript_scripts %}
+{% endblock %}

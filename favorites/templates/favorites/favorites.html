@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Produits favoris{% endblock %}
+
+{% block css_links %}
+<link href="{% static 'favorites/css/favorites.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+        <header class="masthead">
+            <div class="container header-title pb5">
+                <h1 class="d-block text-center text-white"> Vos Favoris</h1>
+            </div>
+            <div class="results results-fav bg-white">
+                    <div class="btn-export text-center">
+                        <a class="btn btn-success" href="{% url 'export' %}" title="exporter mes favoris au format Json">Exporter mes Favoris</a>
+                    </div>
+                <div class="container">
+                    <div class="row d-flex justify-content-between text-center">
+                        {% if not favorites %}
+                        <p> Vous n'avez pas encore substitué de produit !</p>
+                        {% else %}
+                        {% for fav in favorites %}
+                            <div class="p-2 mb-5 mx-lg-2 product-card bg-light border rounded col-lg-3 col-md-5 col-8 offset-2 offset-md-0">
+                                <img src="{{fav.substitute.image_url}}" class="img-fluid product-img rounded mb-1">
+                                <a href="{% url 'detail' pk=fav.substitute.barcode %}" class="d-block mb-2"> {{fav.substitute.product_name}} - {{fav.substitute.brand}}</a>
+                                <p>Substitut de : </p>
+                                <a href="{% url 'detail' pk=fav.product.barcode %}" class="d-block mb-2"> {{fav.product.product_name}} - {{fav.product.brand}}</a>
+                            </div>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </header>
+        <form class="d-flex flex-column flex-md-row justify-content-center align-items-center py-2" action="{% url 'import_json' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input class="py-2 py-md-0"type="file" id="import_favorites" name="imported_file" accept=".json, application/json" title="importer un fichier json pour enregistrer de nouveaux favoris !">
+            <button name='button_send' id='button_send' type="submit" class="btn btn-primary">importer</button>
+        </form>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endblock %}
+
+        {% block javascript_scripts %}
+        {% endblock %}

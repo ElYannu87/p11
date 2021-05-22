@@ -1,0 +1,67 @@
+header.masthead
+{
+    background: url("../images/photo_recherche.8815cc869d2a.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+    padding-bottom: 0;
+    min-height:100vh;
+    height:max-content;
+}
+
+.results
+{
+    min-height: 100vh;
+    padding-top: 4.5rem;
+    padding-bottom: 0;
+}
+
+.product-card
+{
+    min-width:200px;
+}
+
+.product-img
+{
+    height:250px;
+}
+
+.nutriscore
+{
+    position:absolute;
+    border:solid 1px black;
+    height:2.8rem;
+    width:2.8rem;
+    font-size:1.7rem;
+    border-radius:50%;
+    top:-20px;
+    right:-20px;
+    color:white;
+}
+
+.nutriscore-a
+{
+    background-color:green;
+
+}
+
+.nutriscore-b
+{
+    background-color: rgb(30, 199, 30);
+}
+
+.nutriscore-c
+{
+    background-color: orange;
+}
+
+.nutriscore-d
+{
+    background-color: orangered;
+}
+
+.nutriscore-e
+{
+    background-color: red;
+}

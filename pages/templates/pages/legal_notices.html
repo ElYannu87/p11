@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Mentions légales{% endblock %}
+
+{% block css_links %}
+<link href="{% static 'favorites/css/favorites.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<header class="masthead">
+    <div class="container header-title pb-5">
+        <h1 class="d-block text-center text-white">Mentions légales</h1>
+    </div>
+    <div class="results bg-white text-center">
+        <p> Template bootstrap utilisé : <a href="https://startbootstrap.com/theme/creative" target="_blank" rel="noopener noreferrer">Startbootstrap-creative</a></p>
+        <p>Toutes les informations à propos des produits présents sur le site proviennent de l'API <a href="https://world.openfoodfacts.org/" target="_blank" rel="noopener noreferrer">Openfoodfacts</a></p>
+        <p>Toutes les images en rapport avec le film d'animation 'Ratatouille' sont la propriété de Disney</p>
+        <p>Les images de fond utilisées sont disponibles à ces adresses : <a href="https://unsplash.com/photos/eqsEZNCm4-c" target="_blank" rel="noopener noreferrer">image numéro 1</a> - <a href="https://unsplash.com/photos/YTbFHT9_IhY" target="_blank" rel="noopener noreferrer">image numéro 2</a></p>
+        <p>Les logos utilisés (carotte, compte utilisateur, ...) proviennent de <a href="https://fontawesome.com/" target="_blank" rel="noopener noreferrer">font awesome</a></p>
+        <p>Le site web est déployé sur <a href="https://www.heroku.com/" target="_blank" rel="noopener noreferrer">Heroku</a></p>
+        <p>Toutes les autres ressources présentes sur le site sont libres de droit</p>
+    </div>
+</header>
+{% endblock %}
+
+{% block javascript_scripts %}
+{% endblock %}
