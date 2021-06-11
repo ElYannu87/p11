@@ -108,7 +108,7 @@ def activate(request, uidb64, token):
     This method active user account when he click on the link
     inside the email he received
     """
-    try:
+    """     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
         user = User.objects.get(pk=uid)
     except(TypeError, ValueError, OverflowError, User.DoesNotExist):
@@ -122,4 +122,5 @@ def activate(request, uidb64, token):
         capture_message("l'utilisateur {} a activé son compte".format(user.username))
         return redirect('home')
     else:
-        return HttpResponse('Activation link is invalid!')
+        return HttpResponse('Activation link is invalid!') """
+    return "coucou"

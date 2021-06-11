@@ -95,3 +95,45 @@ class UsersViewTest(TestCase):
         self.client.post('/user/logout/')
         user = auth.get_user(self.client)
         self.assertIs(user.is_authenticated, False)
+
+def test_email_is_send_when_a_new_user_create_an_account(self):
+    response = self.client.post(
+        '/user/register/', {"username": 'Michel', "email": "t@test.com", "password": '1234'})
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].subject,"Activez votre compte PurBeurre")
+        self.assertEqual(mail.outbox[0].to[0],"t@test.com")
+
+def test_is_active_is_false_when_a_new_user_create_an_account(self):
+    response = self.client.post(
+        '/user/register/', {"username": 'Michel', "email": "t@test.com", "password": '1234'}, follow=True)
+        new_user = User.objects.get(email="t@test.com")
+        self.assertIs(new_user.is_active, False)
+        for message in response.context['messages']:
+            self.assertEqual(str(message), "Un email vous a été envoyé")
+
+def test_activate_view_change_is_active_attribute_to_true(self):
+    response = self.client.post(
+        '/user/register/', {"username": 'Michel', "email": "t@test.com", "password": '1234'})
+        new_user = User.objects.get(email="t@test.com")
+        self.assertIs(new_user.is_active, False)
+        min_index = mail.outbox[0].body.find("/user/")
+        route = mail.outbox[0].body[min_index:]
+        max_index = len(mail.outbox[0].body)
+        route = route[:max_index-2]
+        response = self.client.get(route, follow=True)
+        new_user = User.objects.get(email="t@test.com")
+        self.assertIs(new_user.is_active, True)
+        for message in response.context['messages']:
+            self.assertIn(str(message), ["Un email vous a été envoyé", "Votre vompte est bien confirmé"])
+
+def test_name_of_route_to_login_is_login(self):
+    resolver = resolve('/user/login/')
+    self.assertEqual(resolver.url_name, 'login')
+
+def test_name_of_route_to_register_is_signup(self):
+    resolver = resolve('/user/register/')
+    self.assertEqual(resolver.url_name, 'signup')
+
+def test_name_of_route_to_logout_is_logout(self):
+    resolver = resolve('/user/logout/')
+    self.assertEqual(resolver.url_name, 'logout')
